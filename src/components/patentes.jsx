@@ -64,6 +64,20 @@ function Patentes() {
             return;
         }
 
+        // ✅ Validar que no tenga espacios
+        if (nuevaPatente.includes(' ')) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Formato inválido',
+                text: 'La patente no puede contener espacios',
+                background: '#111',
+                color: '#fff',
+                confirmButtonColor: '#FFD700',
+                confirmButtonText: 'Entendido',
+            });
+            return;
+        }
+
         try {
             const patenteUpper = nuevaPatente.toUpperCase().trim();
             
@@ -186,7 +200,11 @@ function Patentes() {
                     className="patentes-input-buscar"
                     placeholder="Buscar patente..."
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value.toUpperCase())}
+                    onChange={(e) => {
+                        // ✅ Eliminar espacios automáticamente
+                        const value = e.target.value.replace(/\s/g, '');
+                        setSearchTerm(value.toUpperCase());
+                    }}
                     onKeyPress={(e) => e.key === 'Enter' && setSearchTerm(searchTerm)}
                 />
                 <button 
@@ -252,7 +270,11 @@ function Patentes() {
                                     className="patentes-input-alta"
                                     placeholder="Ej: ABC123"
                                     value={nuevaPatente}
-                                    onChange={(e) => setNuevaPatente(e.target.value.toUpperCase())}
+                                    onChange={(e) => {
+                                        // ✅ Eliminar espacios automáticamente
+                                        const value = e.target.value.replace(/\s/g, '');
+                                        setNuevaPatente(value.toUpperCase());
+                                    }}
                                     onKeyPress={(e) => e.key === 'Enter' && handleAltaPatente()}
                                     autoFocus
                                 />

@@ -18,7 +18,8 @@ function Login({ onLogin }) {
         setError('');
     
         try {
-            const response = await axios.post(`${API_URL}/login`, {
+            // ✅ CORREGIDO: /api/login
+            const response = await axios.post(`${API_URL}/api/login`, {
                 usuario,
                 contrasena
             });

@@ -4,9 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import '../styles/detallePatente.css';
 
-await axios.get(`${API_URL}/api/clientes/${patente.patente}`);
-await axios.put(`${API_URL}/api/clientes/${patente.patente}`, dataToSend);
-await axios.delete(`${API_URL}/api/patentes/${patente.patente}`);
+const API_URL = import.meta.env.VITE_API_URL;
 
 function DetallePatente({ patente, onVolver, onEliminar, onActualizar }) {
     const navigate = useNavigate();
@@ -126,7 +124,7 @@ function DetallePatente({ patente, onVolver, onEliminar, onActualizar }) {
     // ==========================================
     const recargarCliente = async () => {
         try {
-            const response = await axios.get(`${API_URL}/clientes/${patente.patente}`);
+            const response = await axios.get(`${API_URL}/api/clientes/${patente.patente}`);
             if (response.data.success && response.data.data) {
                 const data = response.data.data;
                 setFormData({
@@ -197,7 +195,7 @@ function DetallePatente({ patente, onVolver, onEliminar, onActualizar }) {
             console.log('📦 Datos a enviar:', JSON.stringify(dataToSend, null, 2));
 
             const response = await axios.put(
-                `${API_URL}/clientes/${patente.patente}`,
+                `${API_URL}/api/clientes/${patente.patente}`,
                 dataToSend
             );
 
@@ -320,7 +318,7 @@ function DetallePatente({ patente, onVolver, onEliminar, onActualizar }) {
         setLoading(true);
         try {
             const response = await axios.delete(
-                `${API_URL}/patentes/${patente.patente}`
+                `${API_URL}/api/patentes/${patente.patente}`
             );
 
             if (response.data.success) {
@@ -670,7 +668,7 @@ function DetallePatente({ patente, onVolver, onEliminar, onActualizar }) {
                                 </span>
                             )}
                         </div>
-                        {/* ✅ NUEVO: Próxima Visita KM */}
+                        {/* Próxima Visita KM */}
                         <div className="detalle-campo">
                             <label>Próxima Visita</label>
                             {modoEdicion ? (

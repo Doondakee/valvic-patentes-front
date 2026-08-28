@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2'; 
-import DetallePatente from './detallePatente';
 import '../styles/patentes.css';
 
 const API_URL = import.meta.env.VITE_API_URL; 
@@ -13,8 +12,6 @@ function Patentes() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedPatente, setSelectedPatente] = useState(null);
-    const [showDetail, setShowDetail] = useState(false);
     const [showModalAlta, setShowModalAlta] = useState(false);
     const [nuevaPatente, setNuevaPatente] = useState('');
     const navigate = useNavigate();
@@ -33,7 +30,6 @@ function Patentes() {
 
             const responsePatentes = await axios.get(`${API_URL}/api/patentes`);
             const responseClientes = await axios.get(`${API_URL}/api/clientes`);
-            await axios.post(`${API_URL}/api/patentes`, { patente: patenteUpper });
 
             if (responsePatentes.data.success) {
                 setPatentes(responsePatentes.data.data);
@@ -45,7 +41,7 @@ function Patentes() {
 
         } catch (err) {
             console.error('Error al cargar datos:', err);
-            setError('Error al cargar los datos. Verifica que tu patente no esté creada.');
+            setError('Error al cargar los datos.');
         } finally {
             setLoading(false);
         }
@@ -71,7 +67,7 @@ function Patentes() {
         try {
             const patenteUpper = nuevaPatente.toUpperCase().trim();
             
-            const response = await axios.post(`${API_URL}/patentes`, {
+            const response = await axios.post(`${API_URL}/api/patentes`, {
                 patente: patenteUpper
             });
 
@@ -107,7 +103,7 @@ function Patentes() {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Error al crear la patente. Verifica que tu patente no esté creada.',
+                text: 'Error al crear la patente.',
                 background: '#111',
                 color: '#fff',
                 confirmButtonColor: '#e74c3c',
@@ -138,30 +134,6 @@ function Patentes() {
     };
 
     // ==========================================
-    // Volver a la lista
-    // ==========================================
-    const handleVolver = () => {
-        setShowDetail(false);
-        setSelectedPatente(null);
-    };
-
-    // ==========================================
-    // Eliminar patente (callback desde DetallePatente)
-    // ==========================================
-    const handleEliminar = (patente) => {
-        setShowDetail(false);
-        setSelectedPatente(null);
-        cargarDatos();
-    };
-
-    // ==========================================
-    // Actualizar datos (callback desde DetallePatente)
-    // ==========================================
-    const handleActualizar = () => {
-        cargarDatos();
-    };
-
-    // ==========================================
     // Renderizado
     // ==========================================
     if (loading) {
@@ -188,21 +160,9 @@ function Patentes() {
         );
     }
 
-    // Si está en modo detalle, mostrar el componente DetallePatente
-    if (showDetail && selectedPatente) {
-        return (
-            <DetallePatente 
-                patente={selectedPatente}
-                onVolver={handleVolver}
-                onEliminar={handleEliminar}
-                onActualizar={handleActualizar}
-            />
-        );
-    }
-
     return (
         <div className="patentes-container">
-            {/* HEADER - CONTADOR Y BOTÓN ALTA */}
+            {/* HEADER */}
             <div className="patentes-header">
                 <div className="patentes-header-left">
                     <span className="patentes-count">
@@ -237,7 +197,7 @@ function Patentes() {
                 </button>
             </div>
 
-            {/* GRID DE PATENTES - SOLO MUESTRA LA PATENTE */}
+            {/* GRID DE PATENTES */}
             {patentesFiltradas.length === 0 ? (
                 <div className="patentes-vacio">
                     <p>No hay patentes registradas</p>
@@ -264,13 +224,39 @@ function Patentes() {
                                 <div className="patentes-card-patente">
                                     {p.patente}
                                 </div>
+                                <div className="patentes-card-info">
+                                    {tieneDatos ? (
+                                        <>
+                                            {cliente.modelo_auto && (
+                                                <span className="patentes-card-modelo">
+                                                    🚗 {cliente.modelo_auto}
+                                                </span>
+                                            )}
+                                            {cliente.fecha && (
+                                                <span className="patentes-card-fecha">
+                                                    📅 {new Date(cliente.fecha).toLocaleDateString('es-AR')}
+                                                </span>
+                                            )}
+                                            {cliente.kilometraje && (
+                                                <span className="patentes-card-km">
+                                                    📊 {cliente.kilometraje.toLocaleString()} km
+                                                </span>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <span className="patentes-card-sin-datos">
+                                            Sin datos
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="patentes-card-arrow">➜</div>
                             </div>
                         );
                     })}
                 </div>
             )}
 
-            {/* MODAL DE ALTA DE PATENTE */}
+            {/* MODAL DE ALTA */}
             {showModalAlta && (
                 <div className="patentes-modal-overlay" onClick={() => setShowModalAlta(false)}>
                     <div className="patentes-modal" onClick={(e) => e.stopPropagation()}>

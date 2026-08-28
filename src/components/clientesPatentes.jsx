@@ -4,7 +4,7 @@ import logoValvic from '../assets/valvic.png';
 import logoWhatsapp from '../assets/whatsapp.png';
 import logoInstagram from '../assets/instagram.png';
 
-await axios.get(`${API_URL}/api/clientes/${patenteTrim}`);
+const API_URL = import.meta.env.VITE_API_URL;
 
 function ClientesPatentes() {
     const [patente, setPatente] = useState('');
@@ -14,7 +14,7 @@ function ClientesPatentes() {
     const [logueado, setLogueado] = useState(false);
 
     // ==========================================
-    // Buscar cliente por patente ("login") Gomería
+    // Buscar cliente por patente ("login")
     // ==========================================
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ function ClientesPatentes() {
         setCliente(null);
 
         try {
-            const response = await axios.get(`${API_URL}/clientes/${patenteTrim}`);
+            const response = await axios.get(`${API_URL}/api/clientes/${patenteTrim}`);
 
             if (response.data.success && response.data.data) {
                 setCliente(response.data.data);
@@ -153,7 +153,7 @@ function ClientesPatentes() {
     return (
         <div className="clientes-patentes-container">
             <div className="clientes-patentes-resultado-wrapper">
-                {/* HEADER DEL RESULTADO - Ahora con Salir en la misma línea */}
+                {/* HEADER DEL RESULTADO */}
                 <div className="clientes-patentes-resultado-header">
                     <div className="clientes-patentes-resultado-brand">
                         <img src={logoValvic} alt="Valvic" className="clientes-patentes-resultado-logo" />

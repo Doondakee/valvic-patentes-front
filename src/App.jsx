@@ -171,7 +171,7 @@ function DetallePatenteWrapper() {
       try {
         setLoading(true);
         setError('');
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/clientes/${patente}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/clientes/${patente}`);
         if (response.data.success && response.data.data) {
           setCliente(response.data.data);
         } else {
@@ -200,7 +200,7 @@ function DetallePatenteWrapper() {
   const handleActualizar = () => {
     const recargarCliente = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/clientes/${patente}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/clientes/${patente}`);
         if (response.data.success && response.data.data) {
           setCliente(response.data.data);
         }

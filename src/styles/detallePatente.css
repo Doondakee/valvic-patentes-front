@@ -563,147 +563,144 @@
 }
 
 /********** RESPONSIVE **********/
+@media (max-width: 1370px) {
 
-/* ✅ NUEVO: Pantalla 1366px específica - EXPANDIDA */
-@media (min-width: 1201px) and (max-width: 1400px) {
+    .detalle-container {
+        padding: 100px;
+    }
+
     .detalle-header {
-        width: 92%;
-        padding: 18px 32px;
+        padding: 14px 22px;
+        width: 95%;
     }
 
-    .detalle-patente {
-        font-size: 32px;
+    .detalle-btn-volver {
+        padding: 6px 18px;
     }
 
-    .detalle-datos-vehiculo,
-    .detalle-servicios,
-    .detalle-otros,
-    .detalle-observaciones {
-        padding: 28px 36px;
+    .detalle-btn-modificar {
+        padding: 6px 20px;
     }
 
-    .detalle-total {
-        padding: 28px 36px;
+    .detalle-btn-eliminar {
+        padding: 6px 20px;
     }
 
-    .detalle-datos-grid {
-        gap: 18px 28px;
+    .detalle-btn-guardar {
+        padding: 6px 20px;
     }
 
-    .detalle-valor {
-        font-size: 19px;
-    }
-
-    .detalle-total-valor {
-        font-size: 36px;
-    }
-
-    .detalle-total-label {
-        font-size: 22px;
-    }
-
-    .servicio-card-valor {
-        font-size: 15px;
-    }
-
-    .servicio-card-precio {
-        font-size: 15px;
-    }
-
-    .servicio-card-extra {
-        font-size: 14px;
-    }
-
-    .servicio-card-check {
-        font-size: 15px;
-    }
-
-    .detalle-servicio-card {
-        padding: 18px 24px;
-    }
-
-    .servicio-card-titulo {
-        font-size: 16px;
-    }
-
-    .detalle-servicios-columnas {
-        gap: 20px;
-    }
-
-    .detalle-otros-grid {
-        gap: 14px;
-    }
-}
-
-/* Pantallas muy grandes (1920px+) */
-@media (min-width: 1401px) {
-    .detalle-header {
-        width: 85%;
-        padding: 20px 40px;
-    }
-
-    .detalle-datos-vehiculo,
-    .detalle-servicios,
-    .detalle-otros,
-    .detalle-observaciones {
-        padding: 32px 44px;
-    }
-
-    .detalle-total {
-        padding: 32px 44px;
-    }
-
-    .detalle-patente {
-        font-size: 36px;
-    }
-
-    .detalle-valor {
-        font-size: 20px;
-    }
-
-    .detalle-total-valor {
-        font-size: 40px;
-    }
-
-    .detalle-datos-grid {
-        gap: 20px 32px;
-    }
-
-    .servicio-card-valor {
-        font-size: 16px;
-    }
-
-    .servicio-card-precio {
-        font-size: 16px;
-    }
-
-    .servicio-card-check {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .detalle-datos-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 1024px) {
-    .detalle-datos-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .detalle-servicios-columnas {
-        grid-template-columns: 1fr;
-        gap: 12px;
+    .detalle-btn-cancelar {
+        padding: 6px 20px;
     }
 
     .detalle-body {
-        max-width: 95%;
+        max-width: 90%;
     }
 
-    .detalle-header {
-        max-width: 95%;
+    /********** DATOS DEL VEHÍCULO **********/
+    .detalle-datos-vehiculo {
+        padding: 20px 28px;
+    }
+
+    .detalle-vehiculo-header {
+        margin-bottom: 18px;
+    }
+
+    .detalle-vehiculo-header h3 {
+        font-size: 16px;
+    }
+
+    .detalle-campo label {
+        font-size: 10px;
+    }
+
+    .detalle-valor {
+        font-size: 16px;
+    }
+
+    /********** SERVICIOS **********/
+
+    .detalle-servicios-header h3 {
+        font-size: 16px;
+    }
+
+    .detalle-servicios-count {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+
+    /********** OTROS **********/
+
+    .detalle-otros-header h3 {
+        font-size: 16px;
+    }
+
+    .detalle-otros-count {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+
+    /********** TARJETA DE SERVICIO **********/
+    .detalle-servicio-card {
+        padding: 16px 22px;
+    }
+
+    .servicio-card-titulo {
+        font-size: 14px;
+    }
+
+    /********** MODO VISUAL **********/
+
+    .servicio-card-valor {
+        font-size: 12px;
+    }
+
+    .servicio-card-precio {
+        font-size: 12px;
+    }
+
+    .servicio-card-extra {
+        font-size: 12px;
+    }
+
+    .servicio-card-check {
+        font-size: 12px;
+    }
+
+    /********** MODO EDICIÓN **********/
+    .servicio-card-input { font-size: 12px; }
+    .servicio-card-input-precio { font-size: 12px; }
+    .servicio-card-input-extra { font-size: 12px; }
+
+    /********** TOTAL **********/
+    .detalle-total {
+        padding: 18px 26px;
+    }
+
+    .detalle-total-label {
+        font-size: 18px;
+    }
+
+    .detalle-total-valor {
+        font-size: 22px;
+    }
+
+    /********** OBSERVACIONES **********/
+    .detalle-observaciones {
+        padding: 20px 28px;
+    }
+
+    .detalle-observaciones h3 {
+        font-size: 16px;
+    }
+
+    .detalle-textarea-observaciones {
+        font-size: 13px;
+    }
+
+    .detalle-texto-observaciones {
+        font-size: 12px;
     }
 }
 

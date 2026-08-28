@@ -31,8 +31,9 @@ function Patentes() {
             setLoading(true);
             setError('');
 
-            const responsePatentes = await axios.get(`${API_URL}/patentes`);
-            const responseClientes = await axios.get(`${API_URL}/clientes`);
+            const responsePatentes = await axios.get(`${API_URL}/api/patentes`);
+            const responseClientes = await axios.get(`${API_URL}/api/clientes`);
+            await axios.post(`${API_URL}/api/patentes`, { patente: patenteUpper });
 
             if (responsePatentes.data.success) {
                 setPatentes(responsePatentes.data.data);

@@ -4,7 +4,7 @@ import logoValvic from '../assets/valvic.png';
 import logoWhatsapp from '../assets/whatsapp.png';
 import logoInstagram from '../assets/instagram.png';
 
-const API_URL = import.meta.env.VITE_API_URL;
+await axios.get(`${API_URL}/api/clientes/${patenteTrim}`);
 
 function ClientesPatentes() {
     const [patente, setPatente] = useState('');

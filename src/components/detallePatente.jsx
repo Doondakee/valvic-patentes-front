@@ -4,7 +4,9 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import '../styles/detallePatente.css';
 
-const API_URL = import.meta.env.VITE_API_URL;
+await axios.get(`${API_URL}/api/clientes/${patente.patente}`);
+await axios.put(`${API_URL}/api/clientes/${patente.patente}`, dataToSend);
+await axios.delete(`${API_URL}/api/patentes/${patente.patente}`);
 
 function DetallePatente({ patente, onVolver, onEliminar, onActualizar }) {
     const navigate = useNavigate();

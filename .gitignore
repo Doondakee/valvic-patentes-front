@@ -1,0 +1,97 @@
+# Dependencias
+/node_modules
+/.pnp
+.pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Directorios de construcción
+dist
+dist-ssr
+*.local
+build
+out
+.next
+output
+
+# Archivos de caché
+.cache
+.parcel-cache
+.nuxt
+.nitro
+.cache
+.vite
+
+# IDE / Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Pruebas
+coverage
+.nyc_output
+
+# Sistemas operativos
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Otros
+*.pem
+*.p12
+*.pfx
+*.crt
+*.key
+*.cert
+*.csr
+*.der
+*.p7b
+*.jks
+
+# Configuración de Vercel
+.vercel
+vercel.json
+
+# Configuración de Render
+.render
+
+# Configuración de Supabase
+.supabase
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.log
+*.cache

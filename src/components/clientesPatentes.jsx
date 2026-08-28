@@ -153,7 +153,7 @@ function ClientesPatentes() {
     return (
         <div className="clientes-patentes-container">
             <div className="clientes-patentes-resultado-wrapper">
-                {/* HEADER DEL RESULTADO */}
+                {/* HEADER DEL RESULTADO - Ahora con Salir en la misma línea */}
                 <div className="clientes-patentes-resultado-header">
                     <div className="clientes-patentes-resultado-brand">
                         <img src={logoValvic} alt="Valvic" className="clientes-patentes-resultado-logo" />

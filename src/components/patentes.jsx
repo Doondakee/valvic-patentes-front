@@ -162,7 +162,7 @@ function Patentes() {
 
     return (
         <div className="patentes-container">
-            {/* HEADER */}
+            {/* HEADER - CONTADOR Y BOTÓN ALTA */}
             <div className="patentes-header">
                 <div className="patentes-header-left">
                     <span className="patentes-count">
@@ -197,7 +197,7 @@ function Patentes() {
                 </button>
             </div>
 
-            {/* GRID DE PATENTES */}
+            {/* GRID DE PATENTES - SOLO MUESTRA LA PATENTE */}
             {patentesFiltradas.length === 0 ? (
                 <div className="patentes-vacio">
                     <p>No hay patentes registradas</p>
@@ -224,39 +224,13 @@ function Patentes() {
                                 <div className="patentes-card-patente">
                                     {p.patente}
                                 </div>
-                                <div className="patentes-card-info">
-                                    {tieneDatos ? (
-                                        <>
-                                            {cliente.modelo_auto && (
-                                                <span className="patentes-card-modelo">
-                                                    🚗 {cliente.modelo_auto}
-                                                </span>
-                                            )}
-                                            {cliente.fecha && (
-                                                <span className="patentes-card-fecha">
-                                                    📅 {new Date(cliente.fecha).toLocaleDateString('es-AR')}
-                                                </span>
-                                            )}
-                                            {cliente.kilometraje && (
-                                                <span className="patentes-card-km">
-                                                    📊 {cliente.kilometraje.toLocaleString()} km
-                                                </span>
-                                            )}
-                                        </>
-                                    ) : (
-                                        <span className="patentes-card-sin-datos">
-                                            Sin datos
-                                        </span>
-                                    )}
-                                </div>
-                                <div className="patentes-card-arrow">➜</div>
                             </div>
                         );
                     })}
                 </div>
             )}
 
-            {/* MODAL DE ALTA */}
+            {/* MODAL DE ALTA DE PATENTE */}
             {showModalAlta && (
                 <div className="patentes-modal-overlay" onClick={() => setShowModalAlta(false)}>
                     <div className="patentes-modal" onClick={(e) => e.stopPropagation()}>

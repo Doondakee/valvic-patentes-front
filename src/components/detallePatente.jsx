@@ -668,7 +668,7 @@ function DetallePatente({ patente, onVolver, onEliminar, onActualizar }) {
                                 </span>
                             )}
                         </div>
-                        {/* Próxima Visita KM */}
+                        {/* ✅ NUEVO: Próxima Visita KM */}
                         <div className="detalle-campo">
                             <label>Próxima Visita</label>
                             {modoEdicion ? (
